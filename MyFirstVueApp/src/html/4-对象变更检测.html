@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="(value,name,index) of obj" :key="index">
+                {{name}}:{{value}}
+            </li>
+        </ol>
+
+        <input type="text" v-model="inputKey" >
+        <input type="text" v-model="inputValue">
+        <button @click="addElement">add</button>
+        <button @click="vuesetObj">vue.set</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                inputKey:"",
+                inputValue:"",
+                obj:{
+                    name:"songjie",
+                    age:"26"
+                }
+            },
+            methods: {
+                addElement:function(){
+                    // 不检测变更
+                    this.obj[this.inputKey] = this.inputValue;
+                },
+                vuesetObj:function(){
+                    // 检测变更
+                    Vue.set(this.obj,this.inputKey,this.inputValue);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

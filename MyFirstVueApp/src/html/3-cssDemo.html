@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .box {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+        asdgasdg
+
+        <div :style="styleObj">style test</div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActive: true,
+                hasError:false,
+                styleObj:{
+                    color: "red",
+                    width:"200px",
+                    height:"200px",
+                    "text-align":"center",
+                    border:"1px solid #532",
+                    "background-color":"#423",
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

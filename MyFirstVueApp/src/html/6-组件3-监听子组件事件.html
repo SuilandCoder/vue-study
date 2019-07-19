@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="blog-post-demo">
+        <div :style="{fontSize:postFontSize +'em'}">
+            <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"
+                v-on:enlarge-text="postFontSize+=0.1"></blog-post>
+        </div>
+
+        <alert-box>
+            Something bad happened.
+        </alert-box>
+    </div>
+
+    <script>
+
+        Vue.component('blog-post', {
+            props: ['post'],
+            template: `
+           <div class="blog-post">
+            <h3>{{title}}</h3>
+            <button v-on:click="$emit('enlarge-text')">
+                Enlarge text
+            </button>
+            <div v-html="post.content"></div>
+           </div>
+           `
+        })
+
+        Vue.component('alert-box', {
+            template: `
+                        <div class="demo-alert-box">
+                        <strong>Error!</strong>
+                        <slot></slot>
+                        </div>
+                    `
+        })
+        var vm = new Vue({
+            el: "#blog-post-demo",
+            data: {
+                posts: [
+                    { id: 1, content: "My journey with Vue" },
+                    { id: 2, content: "Blogging with Vue" },
+                    { id: 3, content: "Why Vue is so fun" }
+                ],
+                postFontSize: 1
+            }
+        })
+    </script>
+</body>
+
+</html>
