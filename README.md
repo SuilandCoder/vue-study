@@ -32,4 +32,4 @@
    3. mutations 数据修改
    4. actions 异步数据提交
    5. modules 数据模块与命名空间
-> 3-6 内容都在本项目中实现
+> 3-6 内容都在vue-cource项目中实现
